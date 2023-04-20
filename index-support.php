@@ -1,11 +1,12 @@
 <?php
 require "database/database.php"; // database running
+include "config.php";
 
 session_start();
 
 $table = 'users';
 $username = $_SESSION['username'];
-$db = new SqlFilesExecutor('localhost', 'root', '', 'ware_houses');
+$db = new SqlFilesExecutor(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 $check = $db->connect()->query("SELECT * FROM `$table` WHERE username = '$username'");
 if ($check->num_rows > 0) {
 

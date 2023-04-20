@@ -1,5 +1,6 @@
 <?php
 require "database/data_inserter.php";
+include "config.php";
 
 session_start();
 
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $values = [$username, $email, $password];
         $columns = ['username', 'email', 'password'];
 
-        $db = new DataInserter('localhost', 'root', '', 'ware_houses');
+        $db = new DataInserter(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
         $check = $db->connect()->query("SELECT * FROM `$table` WHERE username = '$username'");
         if ($check->num_rows == 0) {

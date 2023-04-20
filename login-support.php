@@ -1,5 +1,6 @@
 <?php
 require "database/database_connection.php";
+include "config.php";
 
 session_start();
 
@@ -8,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $confirmation = $_POST['password'];
 
-    $db = new DB_Connection('localhost', 'root', '', 'ware_houses');
+    $db = new DB_Connection(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
     $check = $db->connect()->query("SELECT * FROM `$table` WHERE username = '$username'");
     if ($check->num_rows > 0) {
