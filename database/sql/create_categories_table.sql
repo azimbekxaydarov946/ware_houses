@@ -1,4 +1,4 @@
-CREATE TABLE `categories` (
+CREATE TABLE IF NOT EXISTS `categories` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(255),
   `description` TEXT

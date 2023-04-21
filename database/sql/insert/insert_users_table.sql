@@ -1,5 +1,5 @@
-INSERT INTO users (username, email, password)
+INSERT IGNORE INTO users (username, email, password)
 VALUES
-  ('admin', 'admin@example.com', 'password1'),
-  ('user', 'user@example.com', 'password2'),
-  ('guest', 'guest@example.com', 'password3');
+  ('admin', 'admin@example.com', 'cGFzc3dvcmQx'),
+  ('user', 'user@example.com', 'cGFzc3dvcmQy'),
+  ('guest', 'guest@example.com', 'cGFzc3dvcmQz');

@@ -24,7 +24,11 @@ $sql_insert = [
     'insert_users_table.sql',
     'insert_permissions_table.sql',
     'insert_user_role_table.sql',
-    'insert_role_permission_table.sql'
+    'insert_role_permission_table.sql',
+    'insert_categories_table.sql',
+    'insert_products_table.sql',
+    'insert_storages_table.sql',
+    'insert_come_product_table.sql',
 ];
 $sqlFileExecutor = new SqlFilesExecutor('localhost', 'root', '', 'ware_houses');
 $sqlFileExecutor->execute($sql_files, __DIR__ . '/sql/');
