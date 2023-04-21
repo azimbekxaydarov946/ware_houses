@@ -1,4 +1,4 @@
-INSERT INTO role_permission (permission_id, role_id)
+INSERT IGNORE INTO role_permission (permission_id, role_id)
 VALUES
   (1, 1),
   (2, 1),
