@@ -17,7 +17,7 @@ $sql_files = [
     'alter_permissions_role_permission_table.sql',
     'alter_product_category_table.sql',
     'alter_products_come_product_table.sql',
-    'alter_storages_come_product_table.sql'
+    'alter_storages_come_product_table.sql',
 ];
 $sql_insert = [
     'insert_roles_table.sql',

@@ -10,11 +10,18 @@ class DataInserter extends DB_Connection
             $columns = implode(', ', $columns);
             $values = "'" . implode("', '", $values) . "'";
             $sql = "INSERT INTO $table ({$columns}) VALUES ({$values})";
-            $this->connect()->query($sql);
-            if ($this->connect()->connect_error) {
-                die("Error executing file:  " . $this->connect()->connect_error);
+
+            try {
+                $this->connect()->query($sql);
+            } catch (Exception $e) {
+                $this->connect()->query($sql);
+                if ($this->connect()->connect_error) {
+                    die("Error executing file:  " . $this->connect()->connect_error);
+                }
+                return true;
+                echo "<script> alert('Please try again later.')</script>";
             }
-            return true;
         }
+        return false;
     }
 }

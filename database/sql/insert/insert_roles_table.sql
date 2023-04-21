@@ -1,4 +1,4 @@
-INSERT INTO roles (name, description)
+INSERT IGNORE INTO roles (name, description)
 VALUES
   ('admin', 'Admin role with all permissions'),
   ('user', 'User role with limited permissions'),

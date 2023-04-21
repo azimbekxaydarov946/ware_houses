@@ -1,4 +1,4 @@
-INSERT INTO permissions (name, description)
+INSERT IGNORE INTO permissions (name, description)
 VALUES
   ('create', 'Permission to create content'),
   ('read', 'Permission to read content'),

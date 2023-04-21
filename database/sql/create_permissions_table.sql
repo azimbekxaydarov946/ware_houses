@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
-  `name` VARCHAR(255),
+  `name` VARCHAR(255) UNIQUE,
   `description` VARCHAR(255)
 );
