@@ -13,12 +13,13 @@ class DataInserter extends DB_Connection
 
             try {
                 $this->connect()->query($sql);
+                return true;
             } catch (Exception $e) {
                 $this->connect()->query($sql);
                 if ($this->connect()->connect_error) {
                     die("Error executing file:  " . $this->connect()->connect_error);
                 }
-                return true;
+
                 echo "<script> alert('Please try again later.')</script>";
             }
         }
