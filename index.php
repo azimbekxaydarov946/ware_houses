@@ -1,5 +1,6 @@
 <?php
 include "index-support.php";
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -60,29 +61,46 @@ include "index-support.php";
       <!-- Sidebar Navidation Menus-->
       <span class="heading">Main</span>
       <ul class="list-unstyled">
-        <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-        <li><a href="tables.html"> <i class="icon-user"></i>User </a></li>
-        <li><a href="tables.html"> <i class="icon-form-1"></i>Product </a></li>
-        <li><a href="charts.html"> <i class="icon-windows"></i>Category </a></li>
-        <li><a href="forms.html"> <i class="icon-new-file"></i>Arrival of Goods </a></li>
-        <li><a href="hisob.html"> <i class="icon-bars"></i>Report </a></li>
+        <li><a href="index.php"> <i class="icon-home"></i>Home </a></li>
+        <li><a href="user-page.php"> <i class="icon-user"></i>User </a></li>
+        <li><a href="product-page.php"> <i class="icon-form-1"></i>Product </a></li>
+        <li><a href="category-page.php"> <i class="icon-windows"></i>Category </a></li>
+        <li><a href="come-product-page.php"> <i class="icon-new-file"></i>Arrival of Goods </a></li>
+        <li><a href="report-page.php"> <i class="icon-bars"></i>Report </a></li>
         <!-- <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li> -->
       </ul>
     </nav>
     <!-- Sidebar Navigation end-->
     <div class="page-content">
-      <!-- <?php include "Product.php" ?> -->
+      <!-- <php include "Product.php" ?> -->
+      <?php
+      if (isset($_SESSION['user_page']) && $_SESSION['user_page'] == true) {
+        include "user-page.php";
+      }
+      if (isset($_SESSION['product_page']) && $_SESSION['product_page'] == true) {
+        include "product-page.php";
+      }
+      if (isset($_SESSION['categry_page']) && $_SESSION['categry_page'] == true) {
+        include "categry-page.php";
+      }
+      if (isset($_SESSION['come_product_page']) && $_SESSION['come_product_page'] == true) {
+        include "come-product-page.php";
+      }
+      if (isset($_SESSION['report_page']) && $_SESSION['report_page'] == true) {
+        include "report-page.php";
+      }
+      ?>
+
     </div>
-  </div>
-  <!-- JavaScript files-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/popper.js/umd/popper.min.js"> </script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
-  <script src="js/charts-home.js"></script>
-  <script src="js/front.js"></script>
+    <!-- JavaScript files-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="js/charts-home.js"></script>
+    <script src="js/front.js"></script>
 </body>
 
 </html>
