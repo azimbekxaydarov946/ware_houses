@@ -35,7 +35,7 @@ session_start();
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
-          <!-- Navbar Header--><a href="public/index.php" class="navbar-brand">
+          <!-- Navbar Header--><a href="index.php" class="navbar-brand">
             <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Ware</strong><strong>Houses</strong></div>
           </a>
           <!-- Sidebar Toggle Btn-->
@@ -80,8 +80,8 @@ session_start();
       if (isset($_SESSION['product_page']) && $_SESSION['product_page'] == true) {
         include "product-page.php";
       }
-      if (isset($_SESSION['categry_page']) && $_SESSION['categry_page'] == true) {
-        include "categry-page.php";
+      if (isset($_SESSION['category_page']) && $_SESSION['category_page'] == true) {
+        include "category-page.php";
       }
       if (isset($_SESSION['come_product_page']) && $_SESSION['come_product_page'] == true) {
         include "come-product-page.php";

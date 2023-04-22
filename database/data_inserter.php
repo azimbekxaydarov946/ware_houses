@@ -7,12 +7,12 @@ class DataInserter extends DB_Connection
     public function create($table, $values, $columns = null, $role = null, $permission = null)
     {
         if ($table && $values) {
-            $column = implode(', ', $columns);
-            $value = "'" . implode("', '", $values) . "'";
-            $sql = "INSERT INTO $table ({$column}) VALUES ({$value})";
-
             try {
+                $column = implode(', ', $columns);
+                $value = "'" . implode("', '", $values) . "'";
+                $sql = "INSERT INTO $table ({$column}) VALUES ({$value})";
                 $this->connect()->query($sql);
+
                 if ($role) {
                     $role = $this->assignRole($values[0], $role);
                 }
@@ -55,9 +55,11 @@ class DataInserter extends DB_Connection
 
     public function dataGive($data)
     {
-        while ($row = $data->fetch_object()) {
-            $db_data[] = $row;
+        if ($data->num_rows > 0) {
+            while ($row = $data->fetch_object()) {
+                $db_data[] = $row;
+            }
+            return $db_data;
         }
-        return $db_data;
     }
 }

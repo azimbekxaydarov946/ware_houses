@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['come_product_page'])) {
     include "come-product-support.php";
-    $_SESSION['come_product_page']=true;
+    $_SESSION['come_product_page'] = true;
     header("Location: index.php");
     exit;
 }
@@ -23,7 +23,11 @@ unset($_SESSION['come_product_page']);
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Username</th>
-                                <th>Acitions</th>
+                                <?php
+                                if ($_SESSION['role'] != 'guest') :
+                                ?>
+                                    <th>Acitions</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,23 +36,32 @@ unset($_SESSION['come_product_page']);
                                 <td>Mark</td>
                                 <td>Otto</td>
                                 <td>@mdo</td>
-                                <td style="display: flex; justify-content: space-around; width: 50%;">
-                                    <form action="">
-                                        <button class="btn btn-success">
-                                            <div class="icon icon-new-file"></div>
-                                        </button>
-                                    </form>
-                                    <form action="">
-                                        <button class="btn btn-warning">
-                                            <div class="icon icon-settings-1"></div>
-                                        </button>
-                                    </form>
-                                    <form action="">
-                                        <button class="btn btn-danger">
-                                            <div class="icon icon-close"></div>
-                                        </button>
-                                    </form>
-                                </td>
+                                <?php
+                                if ($_SESSION['role'] != 'guest') :
+                                ?>
+                                    <td style="display: flex; justify-content: space-around; width: 50%;">
+                                        <form action="">
+                                            <button class="btn btn-info">
+                                                <div class="icon icon-paper-and-pencil"></div>
+                                            </button>
+                                        </form>
+                                        <form action="">
+                                            <button class="btn btn-success">
+                                                <div class="icon icon-new-file"></div>
+                                            </button>
+                                        </form>
+                                        <form action="">
+                                            <button class="btn btn-warning">
+                                                <div class="icon icon-settings-1"></div>
+                                            </button>
+                                        </form>
+                                        <form action="">
+                                            <button class="btn btn-danger">
+                                                <div class="icon icon-close"></div>
+                                            </button>
+                                        </form>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
                         </tbody>
                     </table>
