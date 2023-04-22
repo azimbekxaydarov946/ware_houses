@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $table = 'users';
         $username = $_POST['username'];
         $email = $_POST['email'];
+        $role = $_POST['role'] ?? 'guest';
+        $permission = $_POST['permission'] ?? 'read';
         $password = base64_encode($_POST['password']);
         $values = [$username, $email, $password];
         $columns = ['username', 'email', 'password'];
@@ -18,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $check = $db->connect()->query("SELECT * FROM `$table` WHERE username = '$username'");
         if ($check->num_rows == 0) {
-            $true = $db->create($table, $values, $columns);
+            $true = $db->create($table, $values, $columns, $role, $permission);
             $_SESSION['username'] = $username;
             if ($true) {
                 header("Location: index.php");
