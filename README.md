@@ -2,9 +2,7 @@
 
 <h2>git clone https://github.com/azimbekxaydarov946/ware_houses.git</h2>
 
-<h3>To enter the project through fake datat</h3>
-
-## Properties
+## To enter the project through fake data
 
 | user_name  |           email         |  password |
 |------------|-------------------------|-----------|
