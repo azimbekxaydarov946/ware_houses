@@ -1,5 +1,17 @@
 <?php
 include "layout-top-form.php";
+require "../database/database_connection.php";
+
+$db = new DB_Connection('localhost', 'root', '', 'ware_houses');
+
+if (isset($db)) {
+    $query = $db->connect()->query("SELECT id, name FROM `categories`");
+    if ($query->num_rows > 0) {
+        while ($row = $query->fetch_object()) {
+            $request[] = $row;
+        }
+    }
+}
 ?>
 
 
@@ -22,10 +34,16 @@ include "layout-top-form.php";
     </div>
     <div class="form-group">
         <label class="form-control-label">Catgories</label>
-        <select name="category_id" id=""  class="form-control">
-            <option value="1">Category-1</option>
-            <option value="2">Category-2</option>
-            <option value="3">Category-3</option>
+        <select name="category_id" id="" class="form-control">
+            <?php
+            if (isset($request)) :
+                foreach ($request as $key => $item) :
+            ?>
+                    <option value="<?= $item->id ?>"><?= $item->name ?></option>
+            <?php
+                endforeach;
+            endif;
+            ?>
         </select>
     </div>
     <div class="form-group">

@@ -6,6 +6,15 @@ if (!isset($_SESSION['user_page'])) {
     header("Location: index.php");
     exit;
 }
+if (isset($db)) {
+    $query = $db->connect()->query("SELECT * FROM `users`");
+    if ($query->num_rows > 0) {
+        while ($row = $query->fetch_object()) {
+            $request[] = $row;
+        }
+    }
+}
+
 unset($_SESSION['user_page']);
 ?>
 
@@ -14,15 +23,23 @@ unset($_SESSION['user_page']);
     <div class="row">
         <div class="col-lg-12">
             <div class="block" style="margin-top: 1%;">
-                <div class="title"><strong>Users list</strong></div>
+            <div class="title" style="display: flex; justify-content: space-between; width: 82%;">
+                    <strong>Users list</strong>
+
+                    <form action="/form/user-create.php">
+                        <button class="btn btn-success">
+                            Create
+                        </button>
+                    </form>
+                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Password</th>
                                 <?php
                                 if ($_SESSION['role'] != 'guest') :
                                 ?>
@@ -31,38 +48,41 @@ unset($_SESSION['user_page']);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <?php
-                                if ($_SESSION['role'] != 'guest') :
-                                ?>
-                                    <td style="display: flex; justify-content: space-around; width: 50%;">
-                                        <form action="">
-                                            <button class="btn btn-info">
-                                                <div class="icon icon-paper-and-pencil"></div>
-                                            </button>
-                                        </form>
-                                        <form action="/form/user-create.php">
-                                            <button class="btn btn-success">
-                                                <div class="icon icon-new-file"></div>
-                                            </button>
-                                        </form>
-                                        <form action="">
-                                            <button class="btn btn-warning">
-                                                <div class="icon icon-settings-1"></div>
-                                            </button>
-                                        </form>
-                                        <form action="">
-                                            <button class="btn btn-danger">
-                                                <div class="icon icon-close"></div>
-                                            </button>
-                                        </form>
-                                    </td>
-                                <?php endif; ?>
-                            </tr>
+                            <?php
+                            if (isset($request)) :
+                                foreach ($request as $key => $item) :
+                            ?>
+                                    <tr>
+                                        <th scope="row"><?= ++$key ?></th>
+                                        <td><?= $item->username ?></td>
+                                        <td><?= $item->email ?></td>
+                                        <td><?= $item->password ?></td>
+                                        <?php
+                                        if ($_SESSION['role'] != 'guest') :
+                                        ?>
+                                            <td style="display: flex; justify-content: space-around; width: 50%;">
+                                                <form action="">
+                                                    <button class="btn btn-info">
+                                                        <div class="icon icon-paper-and-pencil"></div>
+                                                    </button>
+                                                </form>
+                                                <form action="">
+                                                    <button class="btn btn-warning">
+                                                        <div class="icon icon-settings-1"></div>
+                                                    </button>
+                                                </form>
+                                                <form action="">
+                                                    <button class="btn btn-danger">
+                                                        <div class="icon icon-close"></div>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        <?php endif; ?>
+                                    </tr>
+                            <?php
+                                endforeach;
+                            endif;
+                            ?>
                         </tbody>
                     </table>
                 </div>

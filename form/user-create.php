@@ -1,10 +1,4 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['report_page'])) {
-//     header("Location: user_support.php");
-//     exit;
-// }
-// unset($_SESSION['report_page']);
 include "layout-top-form.php";
 ?>
 

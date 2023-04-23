@@ -6,14 +6,12 @@ $db = new DataInserter(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    if ($_POST['product_id'] && $_POST['storage_id'] && $_POST['quantity'] && $_POST['date_added']) {
-        $table = 'come_product';
-        $product_id = $_POST['product_id'];
-        $storage_id = $_POST['storage_id'];
-        $quantity = $_POST['quantity'];
-        $date_added = $_POST['date_added'];
-        $values = [$product_id, $storage_id, $quantity, $date_added];
-        $columns = ['product_id', 'storage_id', 'quantity', 'date_added'];
+    if ($_POST['name'] && $_POST['location']) {
+        $table = 'storages';
+        $name = $_POST['name'];
+        $location = $_POST['location'];
+        $values = [$name, $location];
+        $columns = ['name', 'location'];
 
         try {
             $true = $db->create($table, $values, $columns);
@@ -24,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "<script> alert('User has not joined')</script>";
             }
         } catch (Exception $e) {
-            if ($this->db->connect()->connect_error) {
-                die("Error executing file:  " . $this->db->connect()->connect_error);
+            if ($this->connect()->connect_error) {
+                die("Error executing file:  " . $this->connect()->connect_error);
             }
             return true;
             echo "<script> alert('Please try again later.')</script>";

@@ -61,7 +61,7 @@ session_start();
       <!-- Sidebar Navidation Menus-->
       <span class="heading">Main</span>
       <ul class="list-unstyled">
-        <li><a href="index.php"> <i class="icon-home"></i>Home </a></li>
+        <li><a href="storage-page.php"> <i class="icon-home"></i>Storage </a></li>
         <li><a href="user-page.php"> <i class="icon-user"></i>User </a></li>
         <li><a href="product-page.php"> <i class="icon-form-1"></i>Product </a></li>
         <li><a href="category-page.php"> <i class="icon-windows"></i>Category </a></li>
@@ -88,6 +88,9 @@ session_start();
       }
       if (isset($_SESSION['report_page']) && $_SESSION['report_page'] == true) {
         include "report-page.php";
+      }
+      if (isset($_SESSION['storage_page']) && $_SESSION['storage_page'] == true) {
+        include "storage-page.php";
       }
       ?>
 

@@ -15,8 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = base64_encode($_POST['password']);
         $values = [$username, $email, $password];
         $columns = ['username', 'email', 'password'];
-        $db = new DataInserter(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-     
+
         $check = $db->connect()->query("SELECT * FROM `$table` WHERE username = '$username'");
         try {
             if ($check->num_rows == 0) {
