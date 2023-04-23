@@ -25,12 +25,15 @@ unset($_SESSION['storage_page']);
             <div class="block" style="margin-top: 1%;">
                 <div class="title" style="display: flex; justify-content: space-between; width: 82%;">
                     <strong>Storages list</strong>
-
-                    <form action="/form/storage-create.php">
-                        <button class="btn btn-success">
-                            Create
-                        </button>
-                    </form>
+                    <?php
+                    if ($_SESSION['role'] != 'guest') :
+                    ?>
+                        <form action="/form/storage-create.php">
+                            <button class="btn btn-success">
+                                Create
+                            </button>
+                        </form>
+                    <?php endif ?>
                 </div>
                 <div class="table-responsive">
                     <table class="table">

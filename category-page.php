@@ -26,12 +26,15 @@ unset($_SESSION['category_page']);
             <div class="block" style="margin-top: 1%;">
                 <div class="title" style="display: flex; justify-content: space-between; width: 94%;">
                     <strong>Categories list</strong>
-
-                    <form action="/form/category-create.php">
-                        <button class="btn btn-success">
-                            Create
-                        </button>
-                    </form>
+                    <?php
+                    if ($_SESSION['role'] != 'guest') :
+                    ?>
+                        <form action="/form/category-create.php">
+                            <button class="btn btn-success">
+                                Create
+                            </button>
+                        </form>
+                    <?php endif ?>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
@@ -56,7 +59,7 @@ unset($_SESSION['category_page']);
                                     <tr>
                                         <th scope="row"><?= ++$key ?></th>
                                         <td><?= $item->name ?></td>
-                                        <td><?= $item->description?></td>
+                                        <td><?= $item->description ?></td>
                                         <?php
                                         if ($_SESSION['role'] != 'guest') :
                                         ?>

@@ -32,12 +32,15 @@ unset($_SESSION['come_product_page']);
             <div class="block" style="margin-top: 1%;">
                 <div class="title" style="display: flex; justify-content: space-between; width: 87%;">
                     <strong>Arrival of Goods list</strong>
-
-                    <form action="/form/come-product-create.php">
-                        <button class="btn btn-success">
-                            Create
-                        </button>
-                    </form>
+                    <?php
+                    if ($_SESSION['role'] != 'guest') :
+                    ?>
+                        <form action="/form/come-product-create.php">
+                            <button class="btn btn-success">
+                                Create
+                            </button>
+                        </form>
+                    <?php endif ?>
                 </div>
                 <div class="table-responsive">
                     <table class="table">

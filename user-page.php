@@ -23,14 +23,17 @@ unset($_SESSION['user_page']);
     <div class="row">
         <div class="col-lg-12">
             <div class="block" style="margin-top: 1%;">
-            <div class="title" style="display: flex; justify-content: space-between; width: 82%;">
+                <div class="title" style="display: flex; justify-content: space-between; width: 82%;">
                     <strong>Users list</strong>
-
-                    <form action="/form/user-create.php">
-                        <button class="btn btn-success">
-                            Create
-                        </button>
-                    </form>
+                    <?php
+                    if ($_SESSION['role'] != 'guest') :
+                    ?>
+                        <form action="/form/user-create.php">
+                            <button class="btn btn-success">
+                                Create
+                            </button>
+                        </form>
+                    <?php endif ?>
                 </div>
                 <div class="table-responsive">
                     <table class="table">

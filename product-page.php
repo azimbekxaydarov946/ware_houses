@@ -26,12 +26,15 @@ unset($_SESSION['product_page']);
             <div class="block" style="margin-top: 1%;">
                 <div class="title" style="display: flex; justify-content: space-between; width: 93%;">
                     <strong>Products list</strong>
-
-                    <form action="/form/product-create.php">
-                        <button class="btn btn-success">
-                            Create
-                        </button>
-                    </form>
+                    <?php
+                    if ($_SESSION['role'] != 'guest') :
+                    ?>
+                        <form action="/form/product-create.php">
+                            <button class="btn btn-success">
+                                Create
+                            </button>
+                        </form>
+                    <?php endif ?>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
@@ -56,7 +59,7 @@ unset($_SESSION['product_page']);
                                 foreach ($request as $key => $item) :
                             ?>
                                     <tr>
-                                    <th scope="row"><?= ++$key ?></th>
+                                        <th scope="row"><?= ++$key ?></th>
                                         <td><?= $item->name ?></td>
                                         <td><?= $item->price ?></td>
                                         <td><?= $item->expiration_date ?></td>
